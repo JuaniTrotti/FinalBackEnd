@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 //model user
 const modelProduct = require('../models/productModel')
 //mongo connect //la traigo de .env
-const connectMongo = ''
+const connectMongo = process.env.PRODMONGO
 
 class mongoProduct {
     constructor() {
@@ -13,16 +13,16 @@ class mongoProduct {
     async connectoMongo() {
         try {
             await mongoose.connect(this.connection)
-        } catch {
-            console.log('error connect mongo User')
+        } catch(err) {
+            console.log('error connect mongo User ' + err)
         }
     }
 
     async disconnectMongo() {
         try {
             await mongoose.disconnect()
-        } catch {
-            console.log('error al desconectar mongo User')
+        } catch(err) {
+            console.log('error al desconectar mongo User ' + err)
         }
     }
 
@@ -43,7 +43,6 @@ class mongoProduct {
     async getAll() {
         try {
             let products = await this.model.find()
-            console.log(products)
             return products
         } catch(err) {
             console.log('error getAll ' + err)
@@ -84,14 +83,11 @@ class mongoProduct {
     async getById(id) {
         try {
             let userById = await this.model.find({id: id})
-            console.log(userById)
             return userById
         } catch(err) {
             console.log('error en getbyid ' + err)
         }
     } //devuelve un producto en especifico
-
-    // async update() {}
 }
 
 module.exports = mongoProduct

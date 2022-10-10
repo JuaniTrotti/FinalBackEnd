@@ -8,7 +8,6 @@ const {
 
 async function createProduct(req, res, next) {
     let productDtoNew = createNewProductDTO(req.body)
-    console.log(productDtoNew)
     await createProductService(productDtoNew) 
     ? res.json('product-created')
     : res.json('something-wrong-creating-product')
@@ -25,12 +24,10 @@ async function getProduct(req, res, next) {
 
 async function parseParamProd(req, res, next) {
     req.body.id = req.params.id
-    console.log('lo parsie')
     next()
 }
 
 async function productExist(req, res, next) {
-    console.log(req.body.id + ' desde productexist')
     req.productExist = await productExistService(req.body.id)
     next()
 }

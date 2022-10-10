@@ -4,15 +4,13 @@ const MongoStore = require('connect-mongo')
 //middleware
 const {
     signUp, 
-    logIn, 
-    deleteUser, 
-    updateUser, 
+    logIn,  
     getUser,
     emailExist,
     createSession,
-    isAuth,
     logOut,
-    parseParam
+    parseParam,
+    getSession
 } = require('../controllers/user')
 
 //session start
@@ -20,9 +18,9 @@ const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
 user.use(
     session({
         store: MongoStore.create({
-            mongoUrl: process.env.URLMONGOSESSION || "mongodb+srv://juanitrotti:LZKYuy4d6JQGAuyC@juanignaciomongo.25f7r.mongodb.net/sessions?retryWrites=true&w=majority",
+            mongoUrl: process.env.SESSIONMONGO,
             mongoOptions: advancedOptions,
-            ttl: 6000,
+            ttl: 1000,
         }),
         
         secret: 'obiwankenobi',
@@ -31,6 +29,18 @@ user.use(
     })
 )
 //session end
+user.use((req, res, next) => {
+    req.isAuthenticated = () => {
+        if (req.session.email) {
+            return true
+        }
+        return false
+    }
+    req.logout = done => {
+        req.session.destroy(done)
+    }
+    next()
+})
 
 //sign up
 user.post('/sign-up', emailExist, signUp, createSession)
@@ -38,11 +48,9 @@ user.post('/sign-up', emailExist, signUp, createSession)
 user.post('/log-in', emailExist, logIn, createSession)
 //log out
 user.post('/log-out', emailExist, logOut)
-//elimnar usuario
-user.post('/delete-user', emailExist, deleteUser)
-//actualizar datos
-user.post('/update-user', emailExist, updateUser)
 //get user
 user.get('/get-user/:email', parseParam, emailExist, getUser)
+//session start
+user.get('/session-use', getSession)
 
 module.exports = user

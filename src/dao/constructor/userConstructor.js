@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 //model user
 const modelUser = require('../models/userModel')
 //mongo connect  // la traigo de .env
-const connectMongo = ''
+const connectMongo = process.env.USERMONGO
 
 class mongoUser {
     constructor() {
@@ -21,8 +21,8 @@ class mongoUser {
     async disconnectMongo() {
         try {
             await mongoose.disconnect()
-        } catch {
-            console.log('error al desconectar mongo User')
+        } catch(err) {
+            console.log('error al desconectar mongo User ' + err)
         }
     }
 
@@ -35,8 +35,8 @@ class mongoUser {
             }
             let lastId = last.id
             return lastId
-        } catch {
-            console.log('error in find last')
+        } catch(err) {
+            console.log('error in find last ' + err)
         }
     } //devuelve el ultimo id
 

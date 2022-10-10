@@ -15,7 +15,5 @@ product.post('/create-product', createProduct)
 product.post('/update-product', productExist, updateProduct)
 //getProduct
 product.get('/get-product/:id', parseParamProd, getProduct)
-//searchProduct
-// product.get('/search-product/:filter', searchProduct)
 
 module.exports = product

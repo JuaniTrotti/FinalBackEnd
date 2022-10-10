@@ -1,6 +1,4 @@
-const {getProductDTO} = require('../dto/product/productDto')
 const productConstructor = require('../dao/constructor/productContainer')
-const { number } = require('yargs')
 const productMongo = new productConstructor()
 
 async function createProductService(newprod) {
@@ -12,13 +10,9 @@ async function createProductService(newprod) {
     ) 
 }
 
-async function updateProductService() {
-
-}
-
 async function getProductService(id) {
     await productMongo.connectoMongo()
-    if(id =='all') {
+    if(id == 'all') {
         responseprod = await productMongo.getAll()
     } else {
         responseprod = await productMongo.getById(id)
@@ -35,14 +29,10 @@ async function getProductService(id) {
     }
 }
 
-// async function searchProductService() {}
-// lo dejo para el front
-
 async function productExistService() {}
 
 module.exports = {
     createProductService,
-    updateProductService,
     getProductService,
     productExistService
 }

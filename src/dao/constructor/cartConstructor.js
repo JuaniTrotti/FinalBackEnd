@@ -1,9 +1,9 @@
 const mongoose = require('mongoose')
+const { update } = require('../models/cartModel')
 //model cart
 const modelCart = require('../models/cartModel')
-const product = require('../models/productModel')
 //mongo connect // .env
-const connectMongo = ''
+const connectMongo = process.env.CARTMONGO
 
 class mongoCart {
     constructor() {
@@ -22,8 +22,8 @@ class mongoCart {
     async disconnectMongo() {
         try {
             await mongoose.disconnect()
-        } catch {
-            console.log('error al desconectar mongo User')
+        } catch(err) {
+            console.log('error al desconectar mongo User ' + err)
         }
     }
 
@@ -36,8 +36,8 @@ class mongoCart {
             }
             let lastId = last.id
             return lastId
-        } catch {
-            console.log('error in find last')
+        } catch(err) {
+            console.log('error in find last ' + err)
         }
     } //devuelve el ultimo id
 
@@ -45,14 +45,13 @@ class mongoCart {
         try {
             let data = await this.model.find();
             return data;
-        } catch {
-            console.log("error find()");
+        } catch(err) {
+            console.log("error find() " + err);
         }
     } // devuelve todos los carritos ??? nose para que 
 
     async carritoById(email) {
         try {
-            console.log(email)
             let data = await this.model.findOne({email:email});
             return data
         } catch(err) {
@@ -78,9 +77,8 @@ class mongoCart {
     async deleteCarritoById(email) {
         try {
             await this.model.deleteOne({email: email})
-            console.log("se elimino correctamente");
-        } catch {
-            console.log("error al eliminar");
+        } catch(err) {
+            console.log("error al eliminar " + err);
         }
     } //elimna un carrito // solo en el caso de que el usuario se de de baja
 
@@ -95,16 +93,24 @@ class mongoCart {
 
     async deleteProductById(email, idProd) {
         try {
-            console.log(email + ' ' + idProd)
-            // let intento = await this.model.findOne({email: email}, {product: {}})
-            // console.log(intento)
-            let responseupdate = await this.model.updateOne({email: email}, {$pull: {product: [{id: idProd}]}});
-            console.log(responseupdate)
+            const {product} = await this.carritoById(email)
+            const updateProducts = product.filter((item) => item.id !== parseInt(idProd))
+            let responseupdate = await this.model.updateOne({email: email}, {product: updateProducts});
             return true
         } catch(err) {
             console.log("error al eliminar " + err);
         }
     } //elimina un producto del carrito //ARREGLAR
+
+    async buyCart(email) {
+        try {
+            let productEmpty = []
+            let responseBuy = await this.model.findOneAndUpdate({email: email},{product: productEmpty})
+            return responseBuy
+        } catch(err) {
+            console.log('error buying ' + err)
+        }
+    }
 } 
 
 module.exports = mongoCart
