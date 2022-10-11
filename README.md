@@ -46,6 +46,8 @@ Uuser default: juan.ignacio.tr@gmail.com
 ```
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/users/screen/signup.PNG)
 
+
+
 ### LogIn
 
 ```http
@@ -59,6 +61,8 @@ Uuser default: juan.ignacio.tr@gmail.com
 }
 ```
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/users/screen/login.PNG)
+
+
 ### LogOut
 
 ```http
@@ -71,42 +75,80 @@ Uuser default: juan.ignacio.tr@gmail.com
 }
 ```
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/users/screen/logout.PNG)
+
+
+
 ### Get Session
 
 ```http
   GET /users/session-use
 ```
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/users/screen/getsession.PNG)
+
+
+
 ### Get User
 
 ```http
   GET /users/get-user/:emailUser
 ```
+
+#### Required Parms
+#### :emailUser
+Email del usuario requerido
+
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/users/screen/getuser.PNG)
+
+
+
 ### Get cart
 
 ```http
   GET /cart/get-cart/:emailUser
 ```
+#### Required Parms
+#### :emailUser
+Email del usuario requerido
+
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/cart/screen/getcart.PNG)
+
+
+
 ### Add to cart
 
 ```http
   POST /cart/add-to-cart/:emailUser/:idProd
 ```
+#### :idProd
+Id del producto requerido
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/cart/screen/pushcart.PNG)
+
+
+
 ### Delete product
 
 ```http
   POST /cart/delete-one/:emailUser/:idProd
 ```
+#### Required Parms
+#### :emailUser
+Email del usuario requerido
+#### :idProd
+Id del producto requerido
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/cart/screen/deleteone.PNG)
+
+
 ### Buy cart
 
 ```http
   POST /cart/buy-cart/:emailUser
 ```
+#### Required Parms
+#### :emailUser
+Email del usuario requerido
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/cart/screen/buycart.PNG)
+
+
 
 ### Get product
 
@@ -116,11 +158,16 @@ Uuser default: juan.ignacio.tr@gmail.com
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/products/screen/productall.PNG)
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/products/screen/productone.PNG)
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/products/screen/productnot.PNG)
+
+
+
 ### Add product
 
 ```http
   POST /product/get-product/:idProd
 ```
+#### :idProd
+Id del producto requerido
 
 #### Required body
 ```javascript
@@ -138,6 +185,7 @@ Uuser default: juan.ignacio.tr@gmail.com
 }
 ```
 ![App Screenshot](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/products/screen/createproduct.PNG)
+
 
 
 ## Deploy en Heroku
