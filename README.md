@@ -1,11 +1,3 @@
-# Proyecto final BackEnc || CoderHouse
-
-## Rutas
-
-### Crear un nuevo producto
-<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="https://raw.githubusercontent.com/JuaniTrotti/FinalBackEnd/master/files/products/gif-grande/create-product_AdobeExpress.gif" width="80%" height="auto" >
-
-
 # Proyecto final Backend | CoderHouse
 
 Para la entrega la idea fue crear una api para un e-commerce.
@@ -67,7 +59,7 @@ Para la entrega la idea fue crear una api para un e-commerce.
 ```http
   POST /product/create-product
 ```
-<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="https://raw.githubusercontent.com/JuaniTrotti/FinalBackEnd/master/files/products/gif-grande/create-product_AdobeExpress.gif" width="80%" height="auto" >
+<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="https://raw.githubusercontent.com/JuaniTrotti/FinalBackEnd/master/files/products/gif-grande/create-product_AdobeExpress.gif" width="50%" height="auto" >
 ##### Get product
 
 
