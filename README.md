@@ -187,3 +187,5 @@ Crea un producto nuevo
 ## Deploy en Heroku
 
 [HerokuApp](https://aripto.herokuapp.com/)
+
+![gif-login](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/users/gif/log-in_AdobeExpress.gif)
