@@ -189,3 +189,5 @@ Crea un producto nuevo
 [HerokuApp](https://aripto.herokuapp.com/)
 
 ![gif-login](https://github.com/JuaniTrotti/FinalBackEnd/blob/master/files/users/gif/log-in_AdobeExpress.gif)
+
+<img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 90%);" src="https://raw.githubusercontent.com/JuaniTrotti/FinalBackEnd/master/files/cart/gif/buy-cart_AdobeExpress.gif"; width="100%"; high="auto">
